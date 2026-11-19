@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TETO — Arquitetura Sustentável &amp; Paisagismo</title>
+  <meta name="description" content="TETO Arquitetura Sustentável e Paisagismo. Projetos residenciais, comerciais e corporativos integrados à natureza. Limeira, São Paulo. Coordenação do arquiteto Paulo Trigo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__info">
+        <span>Rua do Real Parque, Limeira — SP</span>
+        <span class="sep">•</span>
+        <a href="tel:+551935550000">(19) 3555-0000</a>
+      </div>
+      <div class="topbar__social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a href="#topo" class="logo">TETO<span>.</span></a>
+      <nav class="nav" id="nav">
+        <a href="#topo">Home</a>
+        <a href="#sobre">Quem Somos</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#" class="nav__ext">Cursos</a>
+        <a href="#" class="nav__ext">Blog</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato" class="nav__cta">Contato</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <p class="hero__eyebrow">Arquitetura Sustentável &amp; Paisagismo</p>
+      <h1 class="hero__title">A ARQUITETURA<br />DA FELICIDADE</h1>
+      <p class="hero__text">Casas e espaços integrados à natureza, pensados para durar gerações e reduzir o impacto ambiental.</p>
+      <div class="hero__cta">
+        <a href="#portfolio" class="btn btn--solid">Projetos recentes</a>
+        <a href="#contato" class="btn btn--ghost">Entre em contato</a>
+      </div>
+    </div>
+    <a href="#sobre" class="hero__scroll" aria-label="Rolar para baixo">↓</a>
+  </section>
+
+  <!-- Sobre -->
+  <section class="section section--about" id="sobre">
+    <div class="container about">
+      <div class="about__quote">
+        <p class="quote">“Construímos para registrar aquilo que nos importa e para lembrar quem queremos ser.”</p>
+        <span class="quote__author">— Alain de Botton</span>
+      </div>
+      <div class="about__body">
+        <p class="section__eyebrow">Quem Somos</p>
+        <h2 class="section__title">Sobre a TETO</h2>
+        <p>Coordenada pelo arquiteto e urbanista <strong>Paulo Trigo</strong>, a TETO nasceu em 2010 com foco em meio ambiente e desenvolvimento sustentável. A trajetória começou na construção civil aos 18 anos, passou pela graduação em Arquitetura na USP, por um intercâmbio em Paris (2007–2008) e por uma especialização em meio ambiente na UNICAMP.</p>
+        <p>Desde 2012 ministra palestras e, desde 2013, leciona na FAAL. Entre 2017 e 2020 atuou como Secretário Municipal de Meio Ambiente e Agricultura de Limeira, presidindo o conselho municipal de meio ambiente.</p>
+        <p class="about__mission">Nossa missão é ajudar cada cliente a alcançar soluções ambientalmente responsáveis, com lares integrados à natureza.</p>
+        <span class="signature">Paulo Trigo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfólio -->
+  <section class="section section--dark" id="portfolio">
+    <div class="container">
+      <div class="section__head center">
+        <p class="section__eyebrow">Portfólio</p>
+        <h2 class="section__title">Projetos em Destaque</h2>
+      </div>
+      <div class="filters" id="filters">
+        <button class="filter is-active" data-filter="all">Todos</button>
+        <button class="filter" data-filter="arquitetura">Arquitetura Sustentável</button>
+        <button class="filter" data-filter="construcao">Construção</button>
+        <button class="filter" data-filter="paisagismo">Paisagismo</button>
+        <button class="filter" data-filter="reforma">Reforma</button>
+      </div>
+      <div class="grid" id="projectsGrid">
+        <!-- cards injected by JS -->
+      </div>
+      <div class="center">
+        <a href="#contato" class="btn btn--solid">Ver portfólio completo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- De olho nas obras -->
+  <section class="section" id="obras">
+    <div class="container">
+      <div class="section__head center">
+        <p class="section__eyebrow">Blog</p>
+        <h2 class="section__title">De Olho nas Obras</h2>
+        <p class="section__sub">Acompanhe obras em andamento e dicas de construção sustentável.</p>
+      </div>
+      <div class="grid grid--3" id="blogGrid">
+        <!-- cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section class="section section--services" id="servicos">
+    <div class="container">
+      <div class="section__head center">
+        <p class="section__eyebrow">O Que Fazemos</p>
+        <h2 class="section__title">Nossos Serviços</h2>
+      </div>
+      <div class="services">
+        <nav class="services__tabs" id="svcTabs">
+          <button class="svc-tab is-active" data-tab="projetos">Projetos</button>
+          <button class="svc-tab" data-tab="consultoria">Consultoria</button>
+          <button class="svc-tab" data-tab="reforma">Reforma</button>
+          <button class="svc-tab" data-tab="construcao">Construção</button>
+          <button class="svc-tab" data-tab="energia">Energia</button>
+          <button class="svc-tab" data-tab="mobiliario">Mobiliário</button>
+        </nav>
+        <div class="services__panels" id="svcPanels"></div>
+      </div>
+      <div class="center">
+        <a href="#contato" class="btn btn--solid">Solicite um orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section class="section section--dark" id="diferenciais">
+    <div class="container">
+      <div class="section__head center">
+        <p class="section__eyebrow">Por que a TETO</p>
+        <h2 class="section__title">Nossos Diferenciais</h2>
+      </div>
+      <div class="grid grid--4 diffs">
+        <article class="diff"><span class="diff__num">01</span><h3>Experiência Aplicada à Prática</h3><p>Da obra ao projeto: décadas de vivência real em canteiro guiando cada decisão.</p></article>
+        <article class="diff"><span class="diff__num">02</span><h3>Mais que um conceito. Um estilo de vida.</h3><p>Sustentabilidade que se traduz no dia a dia, não apenas no papel.</p></article>
+        <article class="diff"><span class="diff__num">03</span><h3>Tecnologias que Transcendem Gerações</h3><p>Projeto bioclimático e leitura do terreno antes de qualquer solução tecnológica.</p></article>
+        <article class="diff"><span class="diff__num">04</span><h3>Aprendizado Constante</h3><p>Pesquisa, ensino e atualização contínua em arquitetura e meio ambiente.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="section" id="depoimentos">
+    <div class="container">
+      <div class="section__head center">
+        <p class="section__eyebrow">Clientes &amp; Parceiros</p>
+        <h2 class="section__title">Depoimentos</h2>
+      </div>
+      <div class="grid grid--3" id="testimonialsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="section section--contact" id="contato">
+    <div class="container contact">
+      <div class="contact__info">
+        <p class="section__eyebrow">Contato</p>
+        <h2 class="section__title">Vamos projetar juntos?</h2>
+        <ul class="contact__list">
+          <li><strong>Endereço</strong><span>Rua do Real Parque, Limeira — SP</span></li>
+          <li><strong>Telefone</strong><span>(19) 3555-0000 · (19) 99999-0000</span></li>
+          <li><strong>E-mail</strong><span>contato@teto2r.com</span></li>
+        </ul>
+      </div>
+      <form class="contact__form" id="contactForm" novalidate>
+        <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" required /></div>
+        <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required /></div>
+        <div class="field"><label for="telefone">Telefone</label><input id="telefone" name="telefone" type="tel" /></div>
+        <div class="field"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" rows="4" required></textarea></div>
+        <button type="submit" class="btn btn--solid">Enviar mensagem</button>
+        <p class="form__status" id="formStatus" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="logo logo--light">TETO<span>.</span></span>
+        <p>Arquitetura Sustentável &amp; Paisagismo<br />Arq. e Urb. Paulo Trigo — CAU A00000-0</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navegação</h4>
+        <a href="#sobre">Quem Somos</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <span>Rua do Real Parque, Limeira — SP</span>
+        <span>(19) 3555-0000</span>
+        <span>contato@teto2r.com</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© <span id="year"></span> TETO Arquitetura Sustentável. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
