@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TETO · Conceitos do símbolo</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --grama: #3b7a2a; --grama-900: #23501a; --ferro: #171716; --cal: #f5f0e6; --pedra: #5e5a52; --gutter: clamp(16px, 4vw, 48px); }
+    * { box-sizing: border-box; margin: 0; }
+    body { background: var(--cal); color: var(--ferro); font: 400 1.0625rem/1.6 "Archivo", system-ui, sans-serif; }
+    .in { max-width: 1400px; margin-inline: auto; padding: 48px var(--gutter); }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; font-stretch: 80%; line-height: 1.05; letter-spacing: -0.02em; }
+    .intro { margin-top: 14px; max-width: 64ch; color: var(--pedra); }
+    .concept { margin-top: 56px; padding-top: 28px; border-top: 2px solid var(--ferro); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px 56px; }
+    .concept h2 { font-size: 1.5rem; font-weight: 700; font-stretch: 85%; }
+    .concept p { margin-top: 10px; color: var(--pedra); max-width: 46ch; }
+    .boards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgb(23 23 22 / .12); }
+    .board { background: #fff; padding: 28px; display: grid; place-items: center; min-height: 220px; color: var(--ferro); }
+    .board--dark { background: var(--ferro); color: var(--cal); }
+    .board--wide { grid-column: span 2; place-items: start; }
+    .mark svg { width: 100%; height: auto; max-height: 160px; }
+    .lockup { display: flex; align-items: center; gap: 20px; }
+    .lockup .mark svg { height: 76px; width: auto; }
+    .word { display: grid; line-height: .9; }
+    .word b { font-size: 4.4rem; font-weight: 800; font-stretch: 72%; letter-spacing: -0.01em; }
+    .word span { font-size: .8rem; font-weight: 600; font-stretch: 100%; letter-spacing: .06em; text-transform: uppercase; margin-top: 6px; }
+    .tiny { display: flex; align-items: center; gap: 16px; color: var(--pedra); font-size: .9375rem; }
+    .tiny .mark { color: var(--ferro); }
+    .tiny .mark svg { height: 16px; width: auto; }
+    .tiny .mark.s32 svg { height: 32px; }
+    @media (max-width: 860px) { .concept { grid-template-columns: 1fr; } .boards { grid-template-columns: 1fr; } .board--wide { grid-column: auto; } .word b { font-size: 3rem; } }
+  </style>
+</head>
+<body>
+  <main class="in">
+    <h1>Símbolo: três conceitos novos</h1>
+    <p class="intro">Desta vez a proporção áurea não é só medida: ela é o próprio desenho. Verde e preto, letreiro na Archivo original. Cada conceito aparece grande, sobre preto, junto do letreiro e em 16 e 32 px.</p>
+
+    <section class="concept" data-src="conceito-1.svg">
+      <div>
+        <h2>1. Retângulo de ouro</h2>
+        <p>O símbolo é um retângulo áureo desenhado. A linha que o divide em quadrado e retângulo menor vira o pilar; a borda de cima vira a viga. Juntos formam um T assimétrico, com os braços na razão 1 : 0,618. Sob o braço longo, um arco verde nasce do pé do pilar e sobe até encostar na viga: uma abóbada, como a copa de uma árvore ou a curva da telha. O losango, com diagonal h/φ², fica no vão menor. É um corte de edifício: viga, pilar, arco.</p>
+      </div>
+      <div class="boards"></div>
+    </section>
+
+    <section class="concept" data-src="conceito-2.svg">
+      <div>
+        <h2>2. Cobertura</h2>
+        <p>Uma laje em balanço sobre um único pilar, na frente de uma árvore. O T é literalmente um teto. O pilar fica no ponto áureo da laje, e a laje passa da copa como uma marquise. É o mais simples dos três e o que melhor sobrevive em tamanho pequeno.</p>
+      </div>
+      <div class="boards"></div>
+    </section>
+
+    <section class="concept" data-src="conceito-3.svg">
+      <div>
+        <h2>3. T e O</h2>
+        <p>TETO começa em T e termina em O. O anel áureo (raio interno = externo/φ) é o O. Uma viga o atravessa e passa para fora à direita; o pilar desce pelo eixo. O pilar divide a viga na razão áurea. Funciona como monograma.</p>
+      </div>
+      <div class="boards"></div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.concept').forEach(async (sec) => {
+      const svg = await (await fetch(sec.dataset.src)).text();
+      sec.querySelector('.boards').innerHTML = `
+        <div class="board"><div class="mark">${svg}</div></div>
+        <div class="board board--dark"><div class="mark">${svg}</div></div>
+        <div class="board board--wide"><div class="lockup"><div class="mark">${svg}</div><div class="word"><b>TETO</b><span>Arquitetura sustentável</span></div></div></div>
+        <div class="board board--wide"><div class="tiny"><div class="mark">${svg}</div><div class="mark s32">${svg}</div><span>16 e 32 px</span></div></div>`;
+    });
+  </script>
+</body>
+</html>

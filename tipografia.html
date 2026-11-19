@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TETO · Letreiro e tipografia</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family: "Mona Sans"; src: url("assets/fonts/mona-sans/MonaSansVF.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; }
+    @font-face { font-family: "Hubot Sans"; src: url("assets/fonts/hubot-sans/HubotSansVF.ttf") format("truetype"); font-weight: 200 900; font-stretch: 80% 120%; font-display: swap; }
+
+    :root { --grama: #3b7a2a; --grama-900: #23501a; --broto: #8dc63f; --ferro: #171716; --cal: #f5f0e6; --cal-200: #ebe3d3; --pedra: #5e5a52; --gutter: clamp(16px, 4vw, 48px); }
+    * { box-sizing: border-box; margin: 0; }
+    body { background: var(--cal); color: var(--ferro); font: 400 1.0625rem/1.6 "Archivo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .in { max-width: 1400px; margin-inline: auto; padding-inline: var(--gutter); }
+
+    .top { padding-block: 48px 40px; }
+    .top h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; font-stretch: 80%; line-height: 1.05; letter-spacing: -0.02em; }
+    .top p { margin-top: 14px; max-width: 64ch; color: var(--pedra); }
+    .top nav { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px 18px; font-weight: 500; }
+
+    section { padding-block: clamp(48px, 7vw, 96px); }
+    .dark { background: var(--ferro); color: var(--cal); }
+    .green { background: var(--grama-900); color: #fff; }
+    .s-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px 48px; padding-bottom: 24px; border-bottom: 1px solid currentColor; margin-bottom: 40px; }
+    .s-head h2 { font-size: 1.375rem; font-weight: 650; line-height: 1.2; }
+    .s-head p { opacity: .85; }
+
+    /* letreiro pintado pela cor do texto via máscara */
+    .lt { display: block; background: currentColor; -webkit-mask: var(--src) no-repeat center / contain; mask: var(--src) no-repeat center / contain; aspect-ratio: 260.08 / 104; }
+    .lt--base { --src: url("tipografia/letreiro-base.svg"); }
+    .lt--viga { --src: url("tipografia/letreiro-viga.svg"); }
+    .lt--junta { --src: url("tipografia/letreiro-junta.svg"); }
+    .lt--losango { --src: url("tipografia/letreiro-losango.svg"); }
+
+    .variants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; background: rgb(23 23 22 / .12); }
+    .variant { background: var(--cal); padding: clamp(24px, 3vw, 40px); display: grid; gap: 28px; }
+    .variant h3 { font-size: 1.25rem; font-weight: 650; }
+    .variant p { color: var(--pedra); max-width: 48ch; }
+    .lockup { display: flex; align-items: center; gap: clamp(14px, 2vw, 24px); }
+    .lockup img { width: clamp(64px, 7vw, 96px); }
+    .lockup .lt { height: clamp(52px, 6vw, 80px); }
+    .tiny { display: flex; align-items: center; gap: 18px; color: var(--pedra); font-size: .9375rem; }
+    .tiny .lt { height: 16px; color: var(--ferro); }
+    .tiny .lt.s24 { height: 24px; }
+    .onDark { background: var(--ferro); color: var(--cal); padding: 20px; display: flex; align-items: center; gap: 18px; }
+    .onDark img { width: 56px; }
+    .onDark .lt { height: 46px; }
+    .onGreen { background: var(--grama-900); color: #fff; }
+
+    .construction { background: var(--branco, #fff); padding: clamp(16px, 3vw, 32px); }
+    .construction img { width: 100%; max-width: 980px; }
+    .facts { margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 32px; }
+    .facts b { display: block; font-size: 1.25rem; font-weight: 650; }
+    .facts span { color: var(--pedra); }
+
+    /* fontes de título */
+    .fonts { display: grid; gap: 2px; background: rgb(255 255 255 / .14); }
+    .font { background: var(--ferro); padding: clamp(24px, 3vw, 40px) 0; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px 48px; align-items: end; }
+    .font .hero { font-size: clamp(2.6rem, 7vw, 6.6rem); line-height: .86; letter-spacing: -0.03em; text-transform: uppercase; }
+    .font h3 { font-size: 1.25rem; font-weight: 650; font-family: "Archivo", sans-serif; font-stretch: 100%; text-transform: none; letter-spacing: 0; }
+    .font p { opacity: .82; margin-top: 8px; }
+    .f-archivo .hero { font-family: "Archivo"; font-weight: 800; font-stretch: 72%; }
+    .f-mona .hero { font-family: "Mona Sans"; font-weight: 800; font-stretch: 75%; letter-spacing: 0; }
+    .f-hubot .hero { font-family: "Hubot Sans"; font-weight: 800; font-stretch: 80%; letter-spacing: -0.01em; }
+    .f-mona .body { font-family: "Mona Sans"; }
+    .f-hubot .body { font-family: "Hubot Sans"; }
+
+    .rec { padding: 28px; background: var(--grama-900); color: #fff; }
+    .rec p + p { margin-top: 10px; }
+
+    @media (max-width: 860px) {
+      .s-head, .variants, .font { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="in top">
+    <h1>Letreiro TETO sob medida e fonte de títulos</h1>
+    <p>Rodada 2. Mantive a linha da Archivo, a grotesca condensada parecida com o letreiro original, e redesenhei as quatro letras na mesma grade áurea do símbolo. Fonte gratuita qualquer pessoa usa; o letreiro desenhado só a TETO tem.</p>
+    <nav><a href="#letreiro">Letreiro</a><a href="#construcao">Construção</a><a href="#titulos">Fonte de títulos</a><a href="tipografia-rodada1.html">Rodada 1</a><a href="index.html">Site</a></nav>
+  </header>
+
+  <section id="letreiro">
+    <div class="in">
+      <div class="s-head">
+        <h2>Quatro letreiros, mesmo esqueleto</h2>
+        <p>Todos partem da mesma base: haste de H/φ³·⁵, T e O com largura H/φ, E com o braço do meio um pouco mais curto. O que muda é um detalhe só, sempre tirado do repertório da obra.</p>
+      </div>
+      <div class="variants">
+        <article class="variant">
+          <h3>Base</h3>
+          <div class="lockup"><img src="brand/logo/teto-simbolo.svg" alt="" width="96" height="96" /><span class="lt lt--base" role="img" aria-label="TETO"></span></div>
+          <p>A grotesca condensada limpa, já ajustada à grade. É a referência: mais próxima do letreiro original, menos exclusiva.</p>
+          <div class="onDark"><img src="brand/logo/teto-simbolo-branco.svg" alt="" width="56" height="56" /><span class="lt lt--base" role="img" aria-label="TETO"></span></div>
+          <div class="tiny"><span class="lt lt--base" role="img" aria-label="TETO em 16 px"></span><span class="lt lt--base s24" role="img" aria-label="TETO em 24 px"></span>16 e 24 px</div>
+        </article>
+        <article class="variant">
+          <h3>Viga</h3>
+          <div class="lockup"><img src="brand/logo/teto-simbolo.svg" alt="" width="96" height="96" /><span class="lt lt--viga" role="img" aria-label="TETO"></span></div>
+          <p>As pontas dos braços são cortadas a 45°, como chapa de aço no maçarico. O ângulo é o mesmo do losango do símbolo.</p>
+          <div class="onDark"><img src="brand/logo/teto-simbolo-branco.svg" alt="" width="56" height="56" /><span class="lt lt--viga" role="img" aria-label="TETO"></span></div>
+          <div class="tiny"><span class="lt lt--viga" role="img" aria-label="TETO em 16 px"></span><span class="lt lt--viga s24" role="img" aria-label="TETO em 24 px"></span>16 e 24 px</div>
+        </article>
+        <article class="variant">
+          <h3>Junta</h3>
+          <div class="lockup"><img src="brand/logo/teto-simbolo.svg" alt="" width="96" height="96" /><span class="lt lt--junta" role="img" aria-label="TETO"></span></div>
+          <p>Uma junta horizontal atravessa as quatro letras na seção áurea da altura, como a viga que corta a fachada da Casa T+J. Vira assinatura reconhecível até sem o símbolo.</p>
+          <div class="onDark onGreen"><img src="brand/logo/teto-simbolo-branco.svg" alt="" width="56" height="56" /><span class="lt lt--junta" role="img" aria-label="TETO"></span></div>
+          <div class="tiny"><span class="lt lt--junta" role="img" aria-label="TETO em 16 px"></span><span class="lt lt--junta s24" role="img" aria-label="TETO em 24 px"></span>16 e 24 px</div>
+        </article>
+        <article class="variant">
+          <h3>Losango</h3>
+          <div class="lockup"><img src="brand/logo/teto-simbolo.svg" alt="" width="96" height="96" /><span class="lt lt--losango" role="img" aria-label="TETO"></span></div>
+          <p>A junta, mais o braço central do E terminando na ponta do losango. O símbolo aparece dentro da palavra, discreto.</p>
+          <div class="onDark"><img src="brand/logo/teto-simbolo-branco.svg" alt="" width="56" height="56" /><span class="lt lt--losango" role="img" aria-label="TETO"></span></div>
+          <div class="tiny"><span class="lt lt--losango" role="img" aria-label="TETO em 16 px"></span><span class="lt lt--losango s24" role="img" aria-label="TETO em 24 px"></span>16 e 24 px</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="construcao" style="padding-top:0">
+    <div class="in">
+      <div class="s-head">
+        <h2>Construção na grade áurea</h2>
+        <p>Diagrama da variação Junta. As linhas verdes são as cotas; as tracejadas, o início de cada letra.</p>
+      </div>
+      <div class="construction"><img src="tipografia/letreiro-construcao.svg" alt="Diagrama de construção do letreiro TETO com as cotas da grade áurea" width="980" height="404" /></div>
+      <div class="facts">
+        <div><b>H = 100</b><span>altura de caixa, base de tudo</span></div>
+        <div><b>Haste 18,6</b><span>H/φ³·⁵, peso de grotesca condensada bold</span></div>
+        <div><b>T e O 61,8</b><span>H/φ, a mesma razão do anel do símbolo</span></div>
+        <div><b>Junta em 38,2</b><span>H/φ², a seção áurea medida do topo</span></div>
+        <div><b>Corte de 45°</b><span>chanfro b/φ, o ângulo do losango</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="titulos">
+    <div class="in">
+      <div class="s-head">
+        <h2>Fonte para títulos e texto</h2>
+        <p>O letreiro é desenhado e não vira fonte. Para os títulos do site e dos impressos, três condensadas na mesma linha. Mona Sans e Hubot Sans são do GitHub, licença aberta OFL, com eixo de largura como a Archivo.</p>
+      </div>
+      <div class="fonts">
+        <div class="font f-archivo">
+          <p class="hero">A arquitetura da felicidade</p>
+          <div><h3>Archivo</h3><p class="body">A atual. Neutra e segura, já testada no site. Personalidade baixa.</p></div>
+        </div>
+        <div class="font f-mona">
+          <p class="hero">A arquitetura da felicidade</p>
+          <div><h3>Mona Sans</h3><p class="body">Grotesca de inspiração industrial, com curvas mais tensas e o “R” e o “A” mais firmes. Mais caráter que a Archivo sem perder a leitura.</p></div>
+        </div>
+        <div class="font f-hubot">
+          <p class="hero">A arquitetura da felicidade</p>
+          <div><h3>Hubot Sans</h3><p class="body">Irmã técnica da Mona: curvas que viram quinas, como peça usinada. Combina com o corte a 45° da variação Viga.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="in">
+      <div class="rec">
+        <p><b>Minha recomendação:</b> letreiro Junta com títulos em Mona Sans.</p>
+        <p>A Junta é o detalhe mais forte e mais fácil de lembrar: uma linha que atravessa a palavra, como a viga atravessa a fachada. Funciona sozinha em placa de obra, carimbo e favicon de texto. A Mona Sans fica na mesma família visual da Archivo que você gostou, com mais tensão nas curvas. Se quiser um passo além em exclusividade, dá para unir Junta e Viga no mesmo letreiro.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

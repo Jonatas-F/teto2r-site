@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TETO · Tipografia candidata</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=bespoke-stencil@500,700,800&f[]=switzer@400,500,600&f[]=tanker@400&f[]=satoshi@400,500,700&f[]=general-sans@400,500,600&f[]=panchang@500,700,800&f[]=boska@400,500,700&display=swap" />
+  <style>
+    @font-face { font-family: "Le Murmure"; src: url("assets/fonts/le-murmure/LeMurmure-Regular.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: "Apfel Grotezk"; src: url("assets/fonts/apfel-grotezk/apfel-grotezk-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "Apfel Grotezk"; src: url("assets/fonts/apfel-grotezk/apfel-grotezk-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+    :root {
+      --grama: #3b7a2a; --grama-900: #23501a; --broto: #8dc63f; --telha: #b04e28;
+      --ferro: #171716; --cal: #f5f0e6; --cal-200: #ebe3d3; --pedra: #5e5a52;
+      --gutter: clamp(16px, 4vw, 48px);
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body { background: var(--cal); color: var(--ferro); font: 400 1.0625rem/1.6 "Switzer", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    .top { padding: 48px var(--gutter) 56px; max-width: 1400px; margin-inline: auto; }
+    .top h1 { font: 600 clamp(2rem, 4vw, 3rem)/1.05 "Switzer", sans-serif; letter-spacing: -0.02em; }
+    .top p { margin-top: 16px; max-width: 62ch; color: var(--pedra); }
+    .top nav { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+    .top nav a { font-weight: 500; }
+
+    /* Cada painel recebe a dupla de fontes via variáveis */
+    .spec {
+      --display: "Switzer"; --text: "Switzer";
+      --d-weight: 700; --d-case: none; --d-track: -0.02em; --d-lh: .9; --d-scale: 1; --d-stretch: 100%;
+      padding: clamp(48px, 7vw, 96px) var(--gutter);
+      font-family: var(--text), system-ui, sans-serif;
+    }
+    .spec--dark { background: var(--ferro); color: var(--cal); }
+    .spec--green { background: var(--grama-900); color: #fff; }
+    .spec__in { max-width: 1400px; margin-inline: auto; }
+
+    .spec__meta { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px 48px; padding-bottom: 28px; border-bottom: 1px solid currentColor; }
+    .spec__meta h2 { font: 600 1.375rem/1.2 "Switzer", sans-serif; }
+    .spec__meta p { opacity: .82; }
+
+    .spec__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); margin-top: clamp(32px, 4vw, 56px); align-items: start; }
+
+    .lockup { display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); }
+    .lockup img { width: clamp(64px, 8vw, 104px); height: auto; }
+    .spec--dark .lockup img, .spec--green .lockup img { filter: none; }
+    .wordmark {
+      font-family: var(--display), sans-serif; font-weight: var(--d-weight); font-stretch: var(--d-stretch);
+      font-size: calc(clamp(3.6rem, 8vw, 7rem) * var(--d-scale)); line-height: .8; letter-spacing: var(--d-track);
+      text-transform: uppercase;
+    }
+    .hero-line {
+      margin-top: clamp(36px, 5vw, 64px);
+      font-family: var(--display), sans-serif; font-weight: var(--d-weight); font-stretch: var(--d-stretch);
+      font-size: calc(clamp(2.6rem, 6.2vw, 6rem) * var(--d-scale)); line-height: var(--d-lh); letter-spacing: var(--d-track);
+      text-transform: var(--d-case);
+    }
+    .h2 {
+      font-family: var(--display), sans-serif; font-weight: var(--d-weight); font-stretch: var(--d-stretch);
+      font-size: calc(clamp(1.9rem, 3.4vw, 3rem) * var(--d-scale)); line-height: 1; letter-spacing: var(--d-track);
+      text-transform: var(--d-case);
+    }
+    .body { margin-top: 18px; max-width: 46ch; font-size: 1.125rem; }
+    .ui { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; font-weight: 500; }
+    .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: var(--grama); color: #fff; font-weight: 600; text-decoration: none; }
+    .spec--dark .btn, .spec--green .btn { background: #fff; color: var(--ferro); }
+    .glyphs { margin-top: 36px; font-family: var(--display), sans-serif; font-weight: var(--d-weight); font-stretch: var(--d-stretch); font-size: calc(2rem * var(--d-scale)); letter-spacing: .02em; line-height: 1.2; opacity: .9; word-break: break-all; }
+
+    /* Duplas */
+    .s-stencil { --display: "Bespoke Stencil"; --text: "Switzer"; --d-weight: 800; --d-case: uppercase; --d-track: -0.01em; --d-lh: .92; }
+    .s-tanker  { --display: "Tanker"; --text: "Satoshi"; --d-weight: 400; --d-case: uppercase; --d-track: 0; --d-lh: .9; }
+    .s-murmure { --display: "Le Murmure"; --text: "General Sans"; --d-weight: 400; --d-case: uppercase; --d-track: 0; --d-lh: .86; --d-scale: 1.18; }
+    .s-apfel   { --display: "Apfel Grotezk"; --text: "Apfel Grotezk"; --d-weight: 400; --d-case: none; --d-track: -0.03em; --d-lh: .92; }
+    .s-panchang{ --display: "Panchang"; --text: "Switzer"; --d-weight: 800; --d-case: uppercase; --d-track: -0.01em; --d-lh: .95; --d-scale: .6; }
+    .s-boska   { --display: "Boska"; --text: "Switzer"; --d-weight: 500; --d-case: none; --d-track: -0.02em; --d-lh: .92; }
+
+    .note { max-width: 1400px; margin: 0 auto; padding: 56px var(--gutter) 96px; }
+    .note h2 { font: 600 1.375rem/1.2 "Switzer", sans-serif; margin-bottom: 14px; }
+    .note table { width: 100%; border-collapse: collapse; }
+    .note th, .note td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--cal-200); vertical-align: top; }
+    .note th { border-bottom: 2px solid var(--ferro); font-weight: 600; }
+    .tbl { overflow-x: auto; }
+
+    @media (max-width: 860px) {
+      .spec__meta, .spec__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <h1>Tipografia: seis caminhos para a TETO</h1>
+    <p>Todas fora do Google Fonts e liberadas para uso comercial. Cada painel mostra o letreiro ao lado do símbolo atual, a frase do hero, um título, texto corrido e um pedaço de interface, nas cores da marca.</p>
+    <nav aria-label="Caminhos">
+      <a href="#stencil">1. Estêncil</a><a href="#tanker">2. Viga</a><a href="#murmure">3. Murmure</a><a href="#apfel">4. Apfel</a><a href="#panchang">5. Horizonte</a><a href="#boska">6. Afeto</a><a href="index.html">Voltar ao site</a>
+    </nav>
+  </header>
+
+  <!-- 1 -->
+  <section class="spec s-stencil" id="stencil">
+    <div class="spec__in">
+      <div class="spec__meta">
+        <h2>1. Estêncil · Bespoke Stencil + Switzer</h2>
+        <p>A letra das placas de obra e das marcações em viga de aço. Os cortes do estêncil repetem a abertura do anel do símbolo: a marca inteira passa a falar de “construir”. Fontshare, licença gratuita da ITF.</p>
+      </div>
+      <div class="spec__grid">
+        <div>
+          <div class="lockup"><img src="brand/logo/teto-simbolo.svg" alt="" width="104" height="104" /><span class="wordmark">Teto</span></div>
+          <p class="hero-line">A arquitetura da felicidade</p>
+        </div>
+        <div>
+          <p class="h2">Da obra para o projeto, não o contrário.</p>
+          <p class="body">Paulo começou no canteiro aos 18 anos, como técnico em edificações. Essa vivência orienta cada projeto: implantação correta no terreno, modulação dos materiais e técnicas que fazem sentido para o lugar.</p>
+          <div class="ui"><a class="btn" href="#stencil">Falar com o Paulo</a><span>Projetos</span><span>Serviços</span><span>Obras</span></div>
+          <p class="glyphs">ÁÉÍÓÚ ÇÃÕ 0123456789 &amp; ?!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="spec spec--dark s-tanker" id="tanker">
+    <div class="spec__in">
+      <div class="spec__meta">
+        <h2>2. Viga · Tanker + Satoshi</h2>
+        <p>Pesada e condensada como um perfil I de aço. Uma letra só, sem variação de peso: no título ela é estrutura. A Satoshi, geométrica e calma, equilibra no texto. Fontshare, licença gratuita da ITF.</p>
+      </div>
+      <div class="spec__grid">
+        <div>
+          <div class="lockup"><img src="brand/logo/teto-simbolo-branco.svg" alt="" width="104" height="104" /><span class="wordmark">Teto</span></div>
+          <p class="hero-line">A arquitetura da felicidade</p>
+        </div>
+        <div>
+          <p class="h2">Da obra para o projeto, não o contrário.</p>
+          <p class="body">Paulo começou no canteiro aos 18 anos, como técnico em edificações. Essa vivência orienta cada projeto: implantação correta no terreno, modulação dos materiais e técnicas que fazem sentido para o lugar.</p>
+          <div class="ui"><a class="btn" href="#tanker">Falar com o Paulo</a><span>Projetos</span><span>Serviços</span><span>Obras</span></div>
+          <p class="glyphs">ÁÉÍÓÚ ÇÃÕ 0123456789 &amp; ?!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="spec s-murmure" id="murmure">
+    <div class="spec__in">
+      <div class="spec__meta">
+        <h2>3. Murmure · Le Murmure + General Sans</h2>
+        <p>Alta e estreita como um pilar, com desenhos alternativos que dão traço autoral. É a mais “de escritório de arquitetura” das seis. Só tem um peso, então fica restrita a títulos. Velvetyne, licença aberta OFL.</p>
+      </div>
+      <div class="spec__grid">
+        <div>
+          <div class="lockup"><img src="brand/logo/teto-simbolo.svg" alt="" width="104" height="104" /><span class="wordmark">Teto</span></div>
+          <p class="hero-line">A arquitetura da felicidade</p>
+        </div>
+        <div>
+          <p class="h2">Da obra para o projeto, não o contrário.</p>
+          <p class="body">Paulo começou no canteiro aos 18 anos, como técnico em edificações. Essa vivência orienta cada projeto: implantação correta no terreno, modulação dos materiais e técnicas que fazem sentido para o lugar.</p>
+          <div class="ui"><a class="btn" href="#murmure">Falar com o Paulo</a><span>Projetos</span><span>Serviços</span><span>Obras</span></div>
+          <p class="glyphs">ÁÉÍÓÚ ÇÃÕ 0123456789 &amp; ?!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="spec spec--green s-apfel" id="apfel">
+    <div class="spec__in">
+      <div class="spec__meta">
+        <h2>4. Apfel · Apfel Grotezk</h2>
+        <p>Uma grotesca com curvas levemente tortas, de mão humana sobre régua. Serve para título e para texto, o que simplifica a marca. Calorosa sem ser rústica. Collletttivo, licença aberta OFL.</p>
+      </div>
+      <div class="spec__grid">
+        <div>
+          <div class="lockup"><img src="brand/logo/teto-simbolo-branco.svg" alt="" width="104" height="104" /><span class="wordmark">Teto</span></div>
+          <p class="hero-line">A arquitetura da felicidade</p>
+        </div>
+        <div>
+          <p class="h2">Da obra para o projeto, não o contrário.</p>
+          <p class="body">Paulo começou no canteiro aos 18 anos, como técnico em edificações. Essa vivência orienta cada projeto: implantação correta no terreno, modulação dos materiais e técnicas que fazem sentido para o lugar.</p>
+          <div class="ui"><a class="btn" href="#apfel">Falar com o Paulo</a><span>Projetos</span><span>Serviços</span><span>Obras</span></div>
+          <p class="glyphs">ÁÉÍÓÚ ÇÃÕ 0123456789 &amp; ?!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="spec s-panchang" id="panchang">
+    <div class="spec__in">
+      <div class="spec__meta">
+        <h2>5. Horizonte · Panchang + Switzer</h2>
+        <p>Larga e baixa como as casas térreas e as vigas em balanço. Ocupa a linha inteira com poucas palavras, ótima para letreiro e títulos curtos; ruim para frases longas. Fontshare, licença gratuita da ITF.</p>
+      </div>
+      <div class="spec__grid">
+        <div>
+          <div class="lockup"><img src="brand/logo/teto-simbolo.svg" alt="" width="104" height="104" /><span class="wordmark">Teto</span></div>
+          <p class="hero-line">A arquitetura da felicidade</p>
+        </div>
+        <div>
+          <p class="h2">Da obra para o projeto, não o contrário.</p>
+          <p class="body">Paulo começou no canteiro aos 18 anos, como técnico em edificações. Essa vivência orienta cada projeto: implantação correta no terreno, modulação dos materiais e técnicas que fazem sentido para o lugar.</p>
+          <div class="ui"><a class="btn" href="#panchang">Falar com o Paulo</a><span>Projetos</span><span>Serviços</span><span>Obras</span></div>
+          <p class="glyphs">ÁÉÍÓÚ ÇÃÕ 0123456789 &amp; ?!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="spec spec--dark s-boska" id="boska">
+    <div class="spec__in">
+      <div class="spec__meta">
+        <h2>6. Afeto · Boska + Switzer</h2>
+        <p>Uma serifada de contraste alto e terminais vivos. Puxa a marca para o lado da “felicidade”, do lar e da memória, contra a frieza técnica. É a mais elegante, a menos “canteiro”. Fontshare, licença gratuita da ITF.</p>
+      </div>
+      <div class="spec__grid">
+        <div>
+          <div class="lockup"><img src="brand/logo/teto-simbolo-branco.svg" alt="" width="104" height="104" /><span class="wordmark">Teto</span></div>
+          <p class="hero-line">A arquitetura da felicidade</p>
+        </div>
+        <div>
+          <p class="h2">Da obra para o projeto, não o contrário.</p>
+          <p class="body">Paulo começou no canteiro aos 18 anos, como técnico em edificações. Essa vivência orienta cada projeto: implantação correta no terreno, modulação dos materiais e técnicas que fazem sentido para o lugar.</p>
+          <div class="ui"><a class="btn" href="#boska">Falar com o Paulo</a><span>Projetos</span><span>Serviços</span><span>Obras</span></div>
+          <p class="glyphs">ÁÉÍÓÚ ÇÃÕ 0123456789 &amp; ?!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="note">
+    <h2>Licenças e uso</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Fonte</th><th>Origem</th><th>Licença</th><th>Pesos</th></tr></thead>
+      <tbody>
+        <tr><td>Bespoke Stencil</td><td>Fontshare (Indian Type Foundry)</td><td>ITF Free Font License: uso comercial liberado, sem redistribuir o arquivo</td><td>300 a 800</td></tr>
+        <tr><td>Tanker</td><td>Fontshare</td><td>ITF Free Font License</td><td>400</td></tr>
+        <tr><td>Le Murmure</td><td>Velvetyne</td><td>SIL Open Font License 1.1</td><td>400</td></tr>
+        <tr><td>Apfel Grotezk</td><td>Collletttivo</td><td>SIL Open Font License 1.1</td><td>400 e 700</td></tr>
+        <tr><td>Panchang</td><td>Fontshare</td><td>ITF Free Font License</td><td>200 a 800</td></tr>
+        <tr><td>Boska</td><td>Fontshare</td><td>ITF Free Font License</td><td>200 a 900, com itálico</td></tr>
+        <tr><td>Switzer, Satoshi, General Sans</td><td>Fontshare</td><td>ITF Free Font License</td><td>Família completa para texto</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</body>
+</html>
