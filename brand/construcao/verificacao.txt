@@ -1,0 +1,43 @@
+Verificação geométrica do símbolo TETO (variante anel)
+Unidade u. Série φ^n, n de -3 a 7.
+
+OK     arco externo: raio 11.090 u = φ^5
+OK     arco interno: raio 6.854 u = φ^4
+OK     espessura do anel R − r = 4.236 u = φ^3
+OK     corte de 0.000,6.854 a 0.000,11.090 é radial: encontra os arcos a 90° (canto intencional)
+OK     corte de 6.854,0.000 a 11.090,0.000 é radial: encontra os arcos a 90° (canto intencional)
+OK     semidiagonal do losango sem correção = 4.236 u = φ^3
+OK     compensação ótica das pontas = 0.382 u = φ^-2
+OK     pilha que fecha: r + φ^3 = R (pontas do losango no quadrado do anel antes da correção)
+OK     vão ponta do losango / corte do anel = φ² − φ⁻² = √5 = 2.236 u
+OK     ponta de cima do losango alinhada ao canto interno do corte horizontal (x = r)
+OK     menor distância anel/losango medida em polígono denso = 2.236 u
+OK     sem Bézier: contorno só com A, L, M, Z
+
+caixa do símbolo: 22.562 × 22.562 u
+área de proteção: 4.236 u (φ^3, espessura do anel)
+menor vão: 2.236 u → altura mínima com vão ≥ 1 px = 10.1 px; impressão (0,25 mm): 2.52 mm
+
+Letreiro: _fontes\archivo\Archivo-wdth-wght.ttf {'wdth': 75, 'wght': 800} track 0.01
+Descritor: _fontes\archivo\Archivo-wdth-wght.ttf {'wdth': 100, 'wght': 600} track 0.06
+
+Contraste (WCAG 2.x):
+  Grama / Cal: 4.62:1
+  Grama / Branco: 5.25:1
+  Grama / Ferro: 3.42:1
+  Grama / Cal escuro: 4.11:1
+  Grama profundo / Cal: 8.28:1
+  Ferro / Cal: 15.79:1
+  Ferro / Grama profundo: 1.91:1
+  Telha / Cal: 4.66:1
+  Broto / Ferro: 8.78:1
+  Broto / Cal: 1.80:1
+  Branco / Grama: 5.25:1
+  Pedra / Cal: 6.04:1
+
+viewBox símbolo: -110.902 -110.902 225.623 225.623
+viewBox horizontal: -110.902 -110.902 1221.953 225.623
+viewBox vertical: 0 0 351.592 515.967
+Assinatura horizontal (u): x_teto 17.944, w_teto 35.159, x_fio 57.340, x_desc 62.576, w_desc 48.530, x_fim 111.105
+Logo: teto-simbolo.svg, teto-simbolo-preto.svg, teto-simbolo-branco.svg, teto-simbolo-negativo.svg, teto-horizontal.svg, teto-horizontal-preto.svg, teto-horizontal-branco.svg, teto-horizontal-negativo.svg, teto-vertical.svg, teto-vertical-preto.svg, teto-vertical-branco.svg, teto-vertical-negativo.svg, favicon.svg, teto-avatar.svg
+Ornamentos: divisor-laje-grama.svg, divisor-laje-cal.svg, caixilho-ferro.svg, caixilho-cal.svg, linha-ferro.svg, linha-cal.svg

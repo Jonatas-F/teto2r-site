@@ -1,0 +1,88 @@
+/*
+  TETO Arquitetura Sustentável · tokens da marca
+  Versão 1.0, novembro de 2026. Fonte: brand/index.html (manual da marca).
+
+  Importar no site:  <link rel="stylesheet" href="brand/tokens.css">
+  Fonte (Google Fonts, eixo de largura obrigatório):
+  https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap
+
+  Contraste WCAG 2.x calculado (fórmula de luminância relativa):
+    Grama sobre Cal 4,62:1 · sobre Branco 5,25:1 · contra Ferro 3,42:1
+    Grama profundo sobre Cal 8,28:1 · Ferro sobre Cal 15,79:1
+    Telha sobre Cal 4,66:1 · Broto sobre Ferro 8,78:1 (Broto sobre Cal 1,80:1, proibido)
+*/
+:root {
+  /* Cores da marca */
+  --teto-grama: #3b7a2a;          /* principal. Texto e marca sobre Cal ou Branco */
+  --teto-grama-profundo: #23501a; /* texto verde sobre Cal escuro, hover, fundos verdes com texto claro */
+  --teto-ferro: #171716;          /* principal. Losango, letreiro, texto, fundos escuros */
+  --teto-cal: #f5f0e6;            /* fundo claro padrão */
+  --teto-cal-escuro: #ebe3d3;     /* superfícies e faixas sobre Cal */
+  --teto-branco: #ffffff;
+  --teto-pedra: #5e5a52;          /* texto secundário sobre Cal (6,04:1) */
+  --teto-telha: #b04e28;          /* secundária, pontual. Nunca no logo */
+  --teto-broto: #8dc63f;          /* acento só sobre Ferro ou Grama profundo. Nunca sobre fundo claro */
+
+  /* Papéis */
+  --teto-fundo: var(--teto-cal);
+  --teto-superficie: var(--teto-branco);
+  --teto-texto: var(--teto-ferro);
+  --teto-texto-2: var(--teto-pedra);
+  --teto-destaque: var(--teto-grama);
+  --teto-fundo-escuro: var(--teto-ferro);
+  --teto-texto-sobre-escuro: var(--teto-cal);
+  --teto-destaque-sobre-escuro: var(--teto-broto);
+
+  /* Tipografia */
+  --teto-fonte: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --teto-largura-titulo: 75%;     /* font-stretch: mesma largura do letreiro TETO */
+  --teto-largura-texto: 100%;
+  --teto-peso-titulo: 800;
+  --teto-peso-subtitulo: 700;
+  --teto-peso-texto: 400;
+  --teto-peso-rotulo: 600;
+  --teto-tam-texto: 1.0625rem;     /* 17 px */
+  --teto-tam-pequeno: 0.875rem;    /* 14 px */
+  --teto-tam-h3: 1.375rem;
+  --teto-tam-h2: clamp(1.75rem, 3.4vw, 2.75rem);
+  --teto-tam-h1: clamp(2.75rem, 8vw, 6.5rem);
+  --teto-entrelinha-texto: 1.6;
+  --teto-entrelinha-titulo: 0.95;
+  --teto-espaco-titulo: -0.01em;
+
+  /* Marca: tamanhos mínimos (proporções no bloco gerado abaixo) */
+  --teto-min-simbolo: 16px;
+  --teto-min-horizontal: 40px;     /* altura */
+  --teto-min-vertical: 150px;      /* altura */
+}
+
+/* gerar:ornamentos */
+:root {
+  /* Ornamentos (gerados por construcao/gerar_marca.py; arquivos em brand/ornamentos/).
+     Data URI: funciona de qualquer pasta. Proporções (largura/altura) ao lado. */
+  --teto-orn-divisor-laje-grama: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 290.344 26.18'%3E%3Cpath fill='%233B7A2A' d='M0 0h290.344v10h-290.344ZM65.451 10h6.18v16.18h-6.18ZM218.713 10h6.18v16.18h-6.18Z'/%3E%3C/svg%3E"); /* 11.090 */
+  --teto-orn-divisor-laje-cal: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 290.344 26.18'%3E%3Cpath fill='%23F5F0E6' d='M0 0h290.344v10h-290.344ZM65.451 10h6.18v16.18h-6.18ZM218.713 10h6.18v16.18h-6.18Z'/%3E%3C/svg%3E"); /* 11.090 */
+  --teto-orn-caixilho-ferro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 179.443 110.902'%3E%3Cg fill='none' stroke='%23171716' stroke-opacity='0.3' stroke-width='1'%3E%3Crect x='0' y='0' width='179.443' height='110.902' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M110.902 0L110.902 110.902M110.902 68.541L179.443 68.541M137.082 68.541L137.082 110.902M110.902 84.721L137.082 84.721M127.082 68.541L127.082 84.721M127.082 78.541L137.082 78.541' vector-effect='non-scaling-stroke'/%3E%3C/g%3E%3C/svg%3E"); /* 1.618 */
+  --teto-orn-caixilho-cal: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 179.443 110.902'%3E%3Cg fill='none' stroke='%23F5F0E6' stroke-opacity='0.4' stroke-width='1'%3E%3Crect x='0' y='0' width='179.443' height='110.902' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M110.902 0L110.902 110.902M110.902 68.541L179.443 68.541M137.082 68.541L137.082 110.902M110.902 84.721L137.082 84.721M127.082 68.541L127.082 84.721M127.082 78.541L137.082 78.541' vector-effect='non-scaling-stroke'/%3E%3C/g%3E%3C/svg%3E"); /* 1.618 */
+  --teto-orn-linha-ferro: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 1' preserveAspectRatio='none'%3E%3Cpath fill='none' stroke='%23171716' stroke-opacity='0.3' stroke-width='1' vector-effect='non-scaling-stroke' d='M1 0V1'/%3E%3C/svg%3E"); /* 2.000 */
+  --teto-orn-linha-cal: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 1' preserveAspectRatio='none'%3E%3Cpath fill='none' stroke='%23F5F0E6' stroke-opacity='0.4' stroke-width='1' vector-effect='non-scaling-stroke' d='M1 0V1'/%3E%3C/svg%3E"); /* 2.000 */
+  --teto-orn-divisor-altura: 16px;     /* mínimo 10 px: pilar de 2,4 px */
+  --teto-orn-caixilho-traco: 1px;      /* Ferro a 30%; o traço não escala; grade com 320 px ou mais */
+  --teto-orn-linha-traco: 1px;         /* Ferro a 30%; uma só linha por página */
+}
+/* /gerar:ornamentos */
+
+/* gerar:proporcoes */
+:root {
+  /* Proporções das assinaturas (largura / altura), geradas pelo script */
+  --teto-razao-simbolo: 1.0000;
+  --teto-razao-horizontal: 5.4159;
+  --teto-razao-vertical: 0.6814;
+}
+/* /gerar:proporcoes */
+
+/* Planta áurea: gerada por construcao/gerar_planta.py (fora dos blocos do gerar_marca.py) */
+:root {
+  --teto-orn-planta-ferro: url("ornamentos/planta-aurea-ferro.svg");
+  --teto-orn-planta-cal: url("ornamentos/planta-aurea-cal.svg");
+}

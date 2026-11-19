@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TETO · Avaliação UX e nova identidade</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .doc { padding-block: 120px 100px; }
+    .doc h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); font-weight: 800; font-stretch: 78%; line-height: .95; text-transform: uppercase; color: var(--ferro); }
+    .doc h1 em { font-family: var(--f-serif); font-style: italic; font-weight: 400; text-transform: none; color: var(--telha); font-stretch: 100%; }
+    .doc h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700; font-stretch: 82%; color: var(--ferro); margin: 72px 0 18px; padding-top: 24px; border-top: 2px solid var(--ferro); }
+    .doc h3 { font-size: 1.2rem; font-weight: 700; color: var(--ferro); margin: 32px 0 10px; }
+    .doc p, .doc li { max-width: 72ch; }
+    .doc .intro { font-size: 1.2rem; margin-top: 20px; color: var(--pedra); }
+    .back { display: inline-block; margin-bottom: 28px; font-weight: 600; color: var(--grama); }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .95rem; }
+    th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--cal-200); }
+    th { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pedra); border-bottom: 2px solid var(--ferro); }
+    td:first-child { white-space: nowrap; }
+    .tbl { overflow-x: auto; background: var(--branco); border-radius: 4px; padding: 4px 8px; }
+    .sev { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: .75rem; font-weight: 700; }
+    .sev--alta { background: #f6d9cc; color: var(--telha-700); }
+    .sev--media { background: #ece4c8; color: #6b5a14; }
+    .sev--baixa { background: #dde9d4; color: var(--grama-900); }
+    .pal { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
+    .chipc { border-radius: 4px; overflow: hidden; background: var(--branco); box-shadow: 0 1px 0 rgb(0 0 0 / .06); }
+    .chipc i { display: block; height: 110px; }
+    .chipc div { padding: 12px 14px; font-size: .85rem; line-height: 1.45; }
+    .chipc b { display: block; font-size: 1rem; color: var(--ferro); }
+    .demo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+    .demo div { padding: 22px; border-radius: 4px; font-weight: 600; }
+    .bad { background: var(--cal); color: var(--broto); border: 1px dashed #c9bfae; }
+    .good { background: var(--ferro); color: var(--broto); }
+    .good2 { background: var(--cal); color: var(--grama); border: 1px solid #c9bfae; }
+    .bad2 { background: var(--branco); color: var(--broto); border: 1px dashed #c9bfae; }
+    .doc ul.list { list-style: disc; padding-left: 1.2em; display: grid; gap: 6px; }
+    .doc ol.list { list-style: decimal; padding-left: 1.3em; display: grid; gap: 6px; }
+    @media (max-width: 640px) { .demo { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap doc">
+    <a class="back" href="index.html">← Voltar ao site</a>
+        <h1>Avaliação UX/UI e nova identidade</h1>
+    <p class="intro">Diagnóstico do site atual (teto2r.com) e as decisões de design aplicadas no novo site que está neste localhost. Base: leitura do HTML publicado, capturas em 1440 px e 390 px, e as fotos reais dos projetos.</p>
+
+    <h2>1. Diagnóstico do site atual</h2>
+
+    <h3>Identidade e legibilidade</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Achado</th><th>Impacto</th><th>Gravidade</th></tr></thead>
+      <tbody>
+        <tr><td>Verde-limão claro como cor de texto e realce sobre fundo claro</td><td>Contraste de 1,8:1 sobre o creme e 2,0:1 sobre o branco. O mínimo da WCAG AA para texto é 4,5:1. É o problema de leitura que motivou a troca de cor.</td><td><span class="sev sev--alta">Alta</span></td></tr>
+        <tr><td>Paleta desconectada da obra</td><td>Os projetos falam de tijolo, telha de barro, aço preto e jardim. O site fala de verde-limão e cinza. A marca não reflete o que o escritório constrói.</td><td><span class="sev sev--alta">Alta</span></td></tr>
+        <tr><td>Hero com título genérico</td><td>“Arquitetura sustentável” é a categoria, não a promessa. O conceito forte da marca, “A arquitetura da felicidade”, aparece só como segundo slide.</td><td><span class="sev sev--media">Média</span></td></tr>
+        <tr><td>Fotos do hero com escurecimento “queimado” na imagem</td><td>Os banners de 2506×816 já vêm escurecidos no arquivo. Não dá para reaproveitar nem ajustar o contraste por CSS.</td><td><span class="sev sev--media">Média</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Conteúdo e navegação</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Achado</th><th>Impacto</th><th>Gravidade</th></tr></thead>
+      <tbody>
+        <tr><td>“Quem somos” em 9 parágrafos corridos</td><td>Currículo em bloco de texto. Quem visita não consegue escanear a trajetória do Paulo, que é o maior ativo de confiança do escritório.</td><td><span class="sev sev--alta">Alta</span></td></tr>
+        <tr><td>Filtro “Arquitetura Sustentável” igual a “Todos”</td><td>Os 8 projetos estão marcados com essa categoria, então o filtro não filtra nada.</td><td><span class="sev sev--media">Média</span></td></tr>
+        <tr><td>Abas de serviço com rótulos que não batem com o conteúdo</td><td>A aba Reforma abre o texto de Paisagismo, Energia abre Mobiliário e Mobiliário abre Arquitetura Sustentável. Não existe texto sobre reforma. E só 1 dos 6 serviços fica visível por vez.</td><td><span class="sev sev--media">Média</span></td></tr>
+        <tr><td>Sem caminho curto para contato</td><td>Não há formulário nem botão de WhatsApp na home, apesar de existir um celular. O contato depende de copiar e-mail ou telefone.</td><td><span class="sev sev--alta">Alta</span></td></tr>
+        <tr><td>Depoimentos longos em carrossel</td><td>Textos de até 150 palavras. A frase de impacto se perde no meio do parágrafo.</td><td><span class="sev sev--baixa">Baixa</span></td></tr>
+        <tr><td>Rodapé com “2019” e busca genérica</td><td>Sinal de site parado. A busca no rodapé tem pouco uso num site de uma página.</td><td><span class="sev sev--baixa">Baixa</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Técnico</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Achado</th><th>Impacto</th><th>Gravidade</th></tr></thead>
+      <tbody>
+        <tr><td>WordPress + WPBakery + Revolution Slider + jQuery</td><td>29 scripts e 15 folhas de estilo na home. Um preloader cobre a página enquanto tudo carrega (as capturas automáticas pegaram só a tela branca do fade).</td><td><span class="sev sev--alta">Alta</span></td></tr>
+        <tr><td>Imagens em JPG, algumas com 379 a 600 px</td><td>Sem WebP ou AVIF. Miniaturas pequenas ficam borradas em telas grandes.</td><td><span class="sev sev--media">Média</span></td></tr>
+        <tr><td>Título da aba com cerca de 200 caracteres</td><td>O Google corta em ~60. A palavra-chave principal fica diluída.</td><td><span class="sev sev--baixa">Baixa</span></td></tr>
+        <tr><td>Hero no celular</td><td>Na captura em 390 px, o título do hero passa da largura da tela.</td><td><span class="sev sev--media">Média</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>2. Nova identidade: Grama, Telha, Ferro, Cal</h2>
+    <p>A paleta saiu dos próprios canteiros: o gramado e as árvores do paisagismo, a telha de barro e o tijolo, as vigas de aço preto e o caixilho, e a cal clara que dá respiro. O verde-limão do logo continua, mas só onde ele é legível: sobre fundo escuro.</p>
+
+    <div class="pal">
+      <div class="chipc"><i style="background:var(--grama)"></i><div><b>Grama</b>#3B7A2A<br />Botões e links<br />4,6:1 no Cal · 5,2:1 no branco</div></div>
+      <div class="chipc"><i style="background:var(--grama-900)"></i><div><b>Grama profundo</b>#23501A<br />Fundo da seção de serviços<br />9,1:1 com texto branco</div></div>
+      <div class="chipc"><i style="background:var(--telha)"></i><div><b>Telha</b>#B04E28<br />Destaques, contato, datas<br />4,7:1 no Cal · 5,3:1 no branco</div></div>
+      <div class="chipc"><i style="background:var(--ferro)"></i><div><b>Ferro</b>#171716<br />Títulos, vigas, seções escuras<br />15,8:1 no Cal</div></div>
+      <div class="chipc"><i style="background:var(--cal); border-bottom:1px solid #ddd"></i><div><b>Cal</b>#F5F0E6<br />Fundo principal<br />Quente, sem o branco duro</div></div>
+      <div class="chipc"><i style="background:var(--broto)"></i><div><b>Broto (verde do logo)</b>#8DC63F<br />Só sobre Ferro ou Grama<br />8,8:1 no Ferro · 1,8:1 no Cal ✗</div></div>
+    </div>
+
+    <h3>Por que o verde claro saiu do texto</h3>
+    <div class="demo">
+      <div class="bad">Verde-limão no creme · 1,8:1 · reprovado</div>
+      <div class="good">Verde-limão no Ferro · 8,8:1 · aprovado</div>
+      <div class="bad2">Verde-limão no branco · 2,0:1 · reprovado</div>
+      <div class="good2">Grama no Cal · 4,6:1 · aprovado</div>
+    </div>
+
+    <h3>Tipografia</h3>
+    <ul class="list">
+      <li><b>Archivo</b> (variável, com eixo de largura): títulos semicondensados em caixa alta, que lembram o letreiro do logo, e texto corrido na largura normal.</li>
+      <li><b>Instrument Serif</b>: reservada à voz de outras pessoas, ou seja, a citação de Alain de Botton e os depoimentos. Nunca em título.</li>
+    </ul>
+
+    <h3>Elementos gráficos</h3>
+    <ul class="list">
+      <li><b>Vigas de ferro</b>: no hero, uma viga horizontal, um pilar e uma viga de base se “montam” na abertura, como a estrutura metálica das casas.</li>
+      <li><b>Borda de telhas</b>: uma fiada de telhas capa-canal em Telha separa o hero, os serviços e o contato.</li>
+      <li><b>Viga da linha do tempo</b>: a trajetória do Paulo fica pendurada numa viga preta que cresce com a rolagem.</li>
+    </ul>
+
+    <h2>3. Movimento</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Onde</th><th>O que acontece</th></tr></thead>
+      <tbody>
+        <tr><td>Hero</td><td>Três projetos se alternam a cada 6,5 s com zoom lento (Ken Burns), barra de progresso e botão de pausa. As vigas se montam e o título sobe palavra por palavra.</td></tr>
+        <tr><td>Rolagem do hero</td><td>A foto desce mais devagar que o texto (parallax), o texto sobe e some, e o header vira sólido.</td></tr>
+        <tr><td>Manifesto</td><td>As palavras da frase de Alain de Botton acendem conforme a leitura.</td></tr>
+        <tr><td>Projetos</td><td>A seção fica fixa e a rolagem vertical move a galeria na horizontal, com uma barra verde de progresso. Sem suporte, vira um carrossel com arraste.</td></tr>
+        <tr><td>Faixa de foto</td><td>A foto da Casa Prada se abre do centro para as bordas e desliza mais devagar que o texto.</td></tr>
+        <tr><td>Sobre e obras</td><td>O retrato do Paulo desliza em ritmo diferente do texto; as fotos das obras deslizam dentro da moldura.</td></tr>
+        <tr><td>Portfólio</td><td>O filtro reorganiza os cards com transição animada (View Transitions).</td></tr>
+        <tr><td>Acessibilidade</td><td>Tudo é CSS nativo guiado pela rolagem, com fallback em JS para navegadores antigos. Com “reduzir movimento” ativado no sistema, as animações e a troca automática param.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>4. Mudanças de conteúdo e estrutura</h2>
+    <ul class="list">
+      <li>Hero com a promessa da marca: “A arquitetura da felicidade”.</li>
+      <li>Currículo do Paulo virou linha do tempo de 6 marcos, com retrato e assinatura.</li>
+      <li>Os 6 serviços ficam visíveis de uma vez, em linhas tipográficas, com os nomes que o conteúdo realmente tem.</li>
+      <li>Portfólio sem filtros (eles não filtravam), em galeria horizontal fixada.</li>
+      <li>Sem “kickers” (linhas pequenas em caixa alta acima dos títulos) e no máximo dois níveis de texto por bloco: título e texto.</li>
+      <li>Depoimentos em trechos fiéis ao texto original (com “(…)” onde foi cortado), em carrossel com arraste e botões.</li>
+      <li>Formulário que monta a mensagem e abre o WhatsApp do escritório, mais botão flutuante de WhatsApp.</li>
+      <li>Stack sem WordPress: HTML, CSS e JS puros, imagens em WebP (3,8 MB no total) e nenhuma dependência.</li>
+    </ul>
+
+    <h2>5. Pendências para decidir</h2>
+    <ol class="list">
+      <li><b>Logo</b>: o verde-limão do símbolo continua. Vale estudar uma versão do símbolo em Grama para uso sobre fundo claro.</li>
+      <li><b>Fotos</b>: Casa A+M, Reforma do escritório e Casa Alphaville só existem em 600 px no site atual. Precisamos dos originais.</li>
+      <li><b>Cursos e Blog</b>: os links externos do menu antigo foram retirados. Confirmar se voltam e para onde apontam.</li>
+      <li><b>Páginas de projeto</b>: hoje os cards levam ao contato. O próximo passo é uma página por obra, com galeria.</li>
+      <li><b>Dados de contato</b>: telefone, celular, e-mail e endereço foram copiados do site atual. Confirmar com o escritório.</li>
+    </ol>
+  </main>
+</body>
+</html>

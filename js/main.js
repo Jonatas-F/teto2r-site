@@ -1,170 +1,270 @@
-/* ============================================================
-   TETO — interações e conteúdo dinâmico
-   ============================================================ */
+/* ==========================================================================
+   TETO v2 · interações
+   ========================================================================== */
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const supportsSDA = CSS.supports('(animation-timeline: view()) and (animation-range: entry)');
 
-// Paletas de "foto" (gradientes placeholder até entrarem as fotos reais)
-const palettes = [
-  'linear-gradient(135deg,#3a5a40,#588157)',
-  'linear-gradient(135deg,#344e41,#3a5a40)',
-  'linear-gradient(135deg,#6b9668,#4f7a4d)',
-  'linear-gradient(135deg,#2f5137,#588157)',
-  'linear-gradient(135deg,#8ab66b,#4f7a4d)',
-  'linear-gradient(135deg,#243f2c,#4f7a4d)',
-  'linear-gradient(135deg,#55713f,#8ab66b)',
-  'linear-gradient(135deg,#1b2e20,#3a5a40)'
-];
-
-/* ---------- Projetos ---------- */
-const projects = [
-  { title: 'Casa T+J', place: 'Porto Real', tags: ['arquitetura', 'paisagismo'], labels: ['Arquitetura', 'Paisagismo'] },
-  { title: 'Casa Prada', place: '', tags: ['arquitetura'], labels: ['Arquitetura Sustentável'] },
-  { title: 'Casa J.E.', place: 'Itapema', tags: ['arquitetura', 'construcao'], labels: ['Arquitetura', 'Construção'] },
-  { title: 'Casa Bela Vista', place: 'A+G', tags: ['arquitetura', 'paisagismo'], labels: ['Arquitetura', 'Paisagismo'] },
-  { title: 'Reforma do Escritório', place: '', tags: ['reforma'], labels: ['Reforma'] },
-  { title: 'Casa A+E', place: '', tags: ['construcao', 'arquitetura'], labels: ['Construção'] },
-  { title: 'Projeto MCMV', place: '', tags: ['arquitetura', 'construcao'], labels: ['Arquitetura', 'Construção'] },
-  { title: 'Casa A+M', place: '', tags: ['paisagismo', 'arquitetura'], labels: ['Paisagismo'] }
-];
-
-const blog = [
-  { title: 'Casa A+E', text: 'Acompanhamento da obra e das escolhas de materiais ecológicos ao longo da execução.' },
-  { title: 'Casa MCMV', text: 'Habitação de interesse social com foco em conforto térmico e baixo custo de manutenção.' },
-  { title: 'Casa Alphaville', text: 'Projeto em wood-frame em Piracicaba: estrutura de madeira, rápida e sustentável.' },
-  { title: 'Casa T+J — Porto Real', text: 'Quinta etapa da obra: integração do paisagismo com a arquitetura da residência.' }
-];
-
-const testimonials = [
-  { name: 'Estefânia Buzolin', role: 'Cliente residencial', text: 'A casa trouxe uma calma que eu não sabia que precisava. Cada ambiente respira natureza.' },
-  { name: 'Jean François Hardouin', role: 'Diretor · Enza Zaden Brasil', text: 'Profissionalismo e sensibilidade ambiental em cada detalhe do projeto corporativo.' },
-  { name: 'Dra. Adriana Sato', role: 'Cliente residencial', text: 'É como ter uma casa de férias dentro da cidade. O bem-estar é diário.' },
-  { name: 'Itaraju e Sueli', role: 'Clientes residenciais', text: 'Nossa conexão com a natureza ficou parte da rotina. Projeto que mudou nossa vida.' },
-  { name: 'Eng. Alex Aguilera', role: 'Parceiro técnico', text: 'Rigor técnico somado a uma visão sustentável rara no mercado. Recomendo sem hesitar.' }
-];
-
-const services = {
-  projetos:    { h: 'Projetos Residenciais e Comerciais', p: 'Projeto modular e otimizado para reduzir desperdício de material, com tijolo ecológico, blocos cerâmicos estruturais ou de concreto, aço e madeira.' },
-  consultoria: { h: 'Consultoria, Palestras e Workshops', p: 'Palestras e oficinas em eventos sobre meio ambiente, arquitetura sustentável e paisagismo, levando conhecimento prático a clientes e profissionais.' },
-  reforma:     { h: 'Reformas Sustentáveis', p: 'Readequação de espaços existentes com soluções de eficiência, reaproveitamento de materiais e melhoria do conforto ambiental.' },
-  construcao:  { h: 'Direção de Obra e Acompanhamento', p: 'Visitas regulares ao canteiro para orientar equipes e fornecedores, garantindo fidelidade ao projeto e qualidade da execução.' },
-  energia:     { h: 'Energia e Infraestrutura Verde', p: 'Placas solares, cisternas de captação de água da chuva e tratamento de esgoto doméstico por plantas (zona de raízes).' },
-  mobiliario:  { h: 'Mobiliário Sob Medida', p: 'Peças exclusivas com madeira de reflorestamento, demolição, ferro e outros materiais reaproveitados.' }
-};
-
-/* ---------- Render ---------- */
-function mediaStyle(i) { return `style="background:${palettes[i % palettes.length]}"`; }
-
-function renderProjects() {
-  const grid = document.getElementById('projectsGrid');
-  grid.innerHTML = projects.map((p, i) => `
-    <article class="card" data-cats="${p.tags.join(' ')}">
-      <div class="card__media" ${mediaStyle(i)}>
-        <div class="card__tags">${p.labels.map(l => `<span class="card__tag">${l}</span>`).join('')}</div>
-      </div>
-      <div class="card__body">
-        <h3 class="card__title">${p.title}${p.place ? ' · ' + p.place : ''}</h3>
-        <a href="#contato" class="card__link">Ver projeto →</a>
-      </div>
-    </article>`).join('');
+/* ---------- Header: muda de transparente para sólido ao sair do hero ---------- */
+function initHeader() {
+  const header = document.querySelector('.site-header');
+  const hero = document.querySelector('.hero');
+  if (!header || !hero) return;
+  let ticking = false;
+  const update = () => {
+    // fica sólido quando o leitor já rolou um terço do hero (antes do texto passar por baixo do logo)
+    header.classList.toggle('is-scrolled', scrollY > hero.offsetHeight * 0.33);
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
 }
 
-function renderBlog() {
-  const grid = document.getElementById('blogGrid');
-  grid.innerHTML = blog.map((b, i) => `
-    <article class="card">
-      <div class="card__media" ${mediaStyle(i + 2)}></div>
-      <div class="card__body">
-        <h3 class="card__title">${b.title}</h3>
-        <p class="card__text">${b.text}</p>
-        <a href="#obras" class="card__link">Ler mais →</a>
-      </div>
-    </article>`).join('');
-}
-
-function renderTestimonials() {
-  const grid = document.getElementById('testimonialsGrid');
-  grid.innerHTML = testimonials.map((t, i) => {
-    const initials = t.name.split(' ').slice(0, 2).map(n => n[0]).join('');
-    return `
-    <article class="testimonial">
-      <div class="testimonial__head">
-        <div class="testimonial__avatar" style="background:${palettes[i % palettes.length]}">${initials}</div>
-        <div>
-          <div class="testimonial__name">${t.name}</div>
-          <div class="testimonial__role">${t.role}</div>
-        </div>
-      </div>
-      <p class="testimonial__text">“${t.text}”</p>
-    </article>`;
-  }).join('');
-}
-
-function renderServices() {
-  const panels = document.getElementById('svcPanels');
-  panels.innerHTML = Object.entries(services).map(([key, s], i) => `
-    <div class="svc-panel ${i === 0 ? 'is-active' : ''}" data-panel="${key}">
-      <h3>${s.h}</h3>
-      <p>${s.p}</p>
-    </div>`).join('');
-}
-
-/* ---------- Interactions ---------- */
-function initFilters() {
-  const btns = document.querySelectorAll('.filter');
-  btns.forEach(btn => btn.addEventListener('click', () => {
-    btns.forEach(b => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
-    const f = btn.dataset.filter;
-    document.querySelectorAll('#projectsGrid .card').forEach(card => {
-      const show = f === 'all' || card.dataset.cats.includes(f);
-      card.classList.toggle('is-hidden', !show);
-    });
-  }));
-}
-
-function initServiceTabs() {
-  const tabs = document.querySelectorAll('.svc-tab');
-  tabs.forEach(tab => tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('is-active'));
-    tab.classList.add('is-active');
-    const key = tab.dataset.tab;
-    document.querySelectorAll('.svc-panel').forEach(p => {
-      p.classList.toggle('is-active', p.dataset.panel === key);
-    });
-  }));
-}
-
-function initNav() {
-  const toggle = document.getElementById('navToggle');
+/* ---------- Menu mobile ---------- */
+function initMenu() {
+  const toggle = document.getElementById('menuToggle');
   const nav = document.getElementById('nav');
-  toggle.addEventListener('click', () => nav.classList.toggle('is-open'));
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
-}
-
-function initForm() {
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    if (!form.checkValidity()) {
-      status.textContent = 'Preencha os campos obrigatórios.';
-      status.style.color = '#e0a66b';
-      return;
-    }
-    status.textContent = 'Mensagem enviada! Em breve entraremos em contato. (demo — sem backend)';
-    status.style.color = 'var(--accent)';
-    form.reset();
+  if (!toggle || !nav) return;
+  const setOpen = (open) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) { setOpen(false); toggle.focus(); }
   });
 }
 
+/* ---------- Hero: troca de projetos com Ken Burns ---------- */
+function initHero() {
+  const hero = document.querySelector('.hero');
+  const slides = [...document.querySelectorAll('.hero__slide')];
+  const bars = [...document.querySelectorAll('.hero__progress i')];
+  const name = document.getElementById('slideName');
+  const pauseBtn = document.getElementById('heroPause');
+  if (!hero || slides.length < 2) return;
+
+  const DURATION = 6500;
+  hero.style.setProperty('--slide-ms', `${DURATION}ms`);
+  let index = 0;
+  let timer = null;
+  let paused = reduceMotion;
+
+  const show = (i) => {
+    index = (i + slides.length) % slides.length;
+    slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
+    bars.forEach((b, n) => {
+      b.classList.toggle('is-done', n < index);
+      b.classList.remove('is-active');
+    });
+    // reinicia a animação da barra atual
+    void bars[index]?.offsetWidth;
+    bars[index]?.classList.add('is-active');
+    name.textContent = slides[index].dataset.caption;
+  };
+
+  const schedule = () => {
+    clearTimeout(timer);
+    if (!paused) timer = setTimeout(() => { show(index + 1); schedule(); }, DURATION);
+  };
+
+  const setPaused = (p) => {
+    paused = p;
+    hero.classList.toggle('is-paused', p);
+    pauseBtn.setAttribute('aria-pressed', String(p));
+    pauseBtn.querySelector('.sr-only').textContent = p ? 'Retomar troca de imagens' : 'Pausar troca de imagens';
+    schedule();
+  };
+
+  pauseBtn.addEventListener('click', () => setPaused(!paused));
+  // não gasta CPU com o hero fora da tela
+  new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) clearTimeout(timer);
+    else schedule();
+  }).observe(hero);
+  document.addEventListener('visibilitychange', () => (document.hidden ? clearTimeout(timer) : schedule()));
+
+  show(0);
+  setPaused(paused);
+}
+
+/* ---------- Manifesto: quebra em palavras para acender na rolagem ---------- */
+function initWords() {
+  document.querySelectorAll('[data-words]').forEach((el) => {
+    const words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`).join(' ');
+    el.setAttribute('aria-label', words.join(' '));
+  });
+}
+
+/* ---------- Linha do tempo: índice para a sequência de entrada ---------- */
+function initTimeline() {
+  document.querySelectorAll('.timeline li').forEach((li, i) => li.style.setProperty('--n', i));
+}
+
+/* ---------- Carrossel de depoimentos ---------- */
+function initQuotes() {
+  const track = document.getElementById('quotes');
+  if (!track) return;
+  const pauseBtn = document.getElementById('quotesPause');
+  const originals = [...track.children];
+  const n = originals.length;
+  if (n < 2) return;
+
+  // Loop infinito: uma cópia dos depoimentos no fim, fora da leitura e do foco.
+  originals.forEach((li) => {
+    const clone = li.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.inert = true;
+    clone.classList.add('is-clone');
+    track.append(clone);
+  });
+
+  const step = () => {
+    const card = track.querySelector('.quote');
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 20;
+    return card ? card.getBoundingClientRect().width + gap : 400;
+  };
+  const setWidth = () => step() * n;
+  const smooth = reduceMotion ? 'auto' : 'smooth';
+
+  // Ao passar do último original para as cópias, volta em silêncio para a posição equivalente.
+  const normalize = () => {
+    const w = setWidth();
+    if (track.scrollLeft >= w - 2) track.scrollTo({ left: track.scrollLeft - w, behavior: 'instant' });
+  };
+  let settle;
+  const onSettled = () => { clearTimeout(settle); settle = setTimeout(normalize, 80); };
+  track.addEventListener('scrollend', onSettled);
+  track.addEventListener('scroll', () => { clearTimeout(settle); settle = setTimeout(normalize, 220); }, { passive: true });
+
+  const go = (dir) => {
+    if (dir < 0 && track.scrollLeft < step() / 2) {
+      track.scrollTo({ left: track.scrollLeft + setWidth(), behavior: 'instant' });
+    }
+    track.scrollBy({ left: step() * dir, behavior: smooth });
+  };
+
+  document.querySelectorAll('.carousel-nav .round-btn[data-dir]').forEach((btn) => {
+    btn.addEventListener('click', () => { go(Number(btn.dataset.dir)); restart(); });
+  });
+
+  // Rodagem automática: 5 s por depoimento, com pausa manual e pausas automáticas.
+  const DELAY = 5000;
+  let timer = null;
+  let userPaused = reduceMotion;
+  let hover = false;
+  let visible = false;
+  const running = () => !userPaused && !hover && visible && !document.hidden;
+  const restart = () => {
+    clearInterval(timer);
+    if (running()) timer = setInterval(() => go(1), DELAY);
+  };
+  const setPaused = (p) => {
+    userPaused = p;
+    if (pauseBtn) {
+      pauseBtn.setAttribute('aria-pressed', String(p));
+      pauseBtn.setAttribute('aria-label', p ? 'Retomar depoimentos' : 'Pausar depoimentos');
+    }
+    restart();
+  };
+  pauseBtn?.addEventListener('click', () => setPaused(!userPaused));
+  const holdOn = () => { hover = true; restart(); };
+  const holdOff = () => { hover = false; restart(); };
+  track.addEventListener('pointerenter', holdOn);
+  track.addEventListener('pointerleave', holdOff);
+  track.addEventListener('focusin', holdOn);
+  track.addEventListener('focusout', holdOff);
+  track.addEventListener('touchstart', holdOn, { passive: true });
+  track.addEventListener('touchend', () => setTimeout(holdOff, 3000), { passive: true });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; restart(); }, { threshold: 0.3 }).observe(track);
+  document.addEventListener('visibilitychange', restart);
+  setPaused(userPaused);
+}
+
+/* ---------- Formulário: monta a mensagem e abre o WhatsApp ---------- */
+function initForm() {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      status.textContent = 'Preencha nome e mensagem para continuar.';
+      status.classList.add('is-error');
+      form.querySelector(':invalid')?.focus();
+      return;
+    }
+    const d = new FormData(form);
+    const text = [
+      `Olá, Paulo! Meu nome é ${d.get('nome')}.`,
+      `Tipo de projeto: ${d.get('tipo')}.`,
+      d.get('telefone') ? `Meu WhatsApp: ${d.get('telefone')}.` : '',
+      '',
+      d.get('mensagem'),
+    ].filter((l, i) => l || i === 3).join('\n');
+    status.classList.remove('is-error');
+    status.textContent = 'Abrindo o WhatsApp com a sua mensagem...';
+    window.open(`https://wa.me/5519988082306?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  });
+}
+
+/* ---------- Nav ativa conforme a seção visível ---------- */
+function initActiveNav() {
+  const links = [...document.querySelectorAll('.nav__list a')];
+  const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const link = map.get(e.target.id);
+      if (link && e.isIntersecting) {
+        links.forEach((l) => l.removeAttribute('aria-current'));
+        link.setAttribute('aria-current', 'true');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+}
+
+/* ---------- Fallbacks para navegadores sem scroll-driven animations ---------- */
+function initFallbacks() {
+  if (supportsSDA || reduceMotion) return;
+
+  // revelações
+  document.documentElement.classList.add('js-reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // parallax das faixas e do hero
+  const layers = [...document.querySelectorAll('.parallax')];
+  const heroMedia = document.querySelector('.hero__media');
+  let ticking = false;
+  const update = () => {
+    const vh = innerHeight;
+    layers.forEach((layer) => {
+      const r = layer.closest('section').getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const p = (vh - r.top) / (vh + r.height); // 0 → 1
+      layer.style.transform = `translateY(${(-10 + p * 20).toFixed(2)}%)`;
+    });
+    if (heroMedia && scrollY < vh) heroMedia.style.transform = `translateY(${(scrollY / vh) * 28}%)`;
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+}
+
 /* ---------- Boot ---------- */
-document.addEventListener('DOMContentLoaded', () => {
-  renderProjects();
-  renderBlog();
-  renderTestimonials();
-  renderServices();
-  initFilters();
-  initServiceTabs();
-  initNav();
-  initForm();
-  document.getElementById('year').textContent = new Date().getFullYear();
-});
+initWords();
+initHeader();
+initMenu();
+initHero();
+initTimeline();
+initQuotes();
+initForm();
+initActiveNav();
+initFallbacks();
+document.getElementById('year').textContent = new Date().getFullYear();

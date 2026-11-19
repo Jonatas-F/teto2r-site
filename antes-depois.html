@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TETO · Renders antes e depois</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="brand/logo/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="brand/tokens.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { background: var(--teto-cal); color: var(--teto-ferro); font: 400 1.0625rem/1.6 var(--teto-fonte); -webkit-font-smoothing: antialiased; }
+    .in { max-width: 1240px; margin-inline: auto; padding: 48px clamp(16px, 4vw, 40px) 96px; }
+    h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; font-stretch: 75%; line-height: .95; }
+    .intro { margin-top: 14px; max-width: 62ch; color: var(--teto-pedra); }
+    .back { display: inline-block; margin-bottom: 24px; font-weight: 600; color: var(--teto-grama); }
+    .item { margin-top: 64px; }
+    .item__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-bottom: 14px; border-bottom: 1px solid color-mix(in srgb, var(--teto-ferro) 25%, transparent); margin-bottom: 18px; }
+    .item__head h2 { font-size: 1.375rem; font-weight: 700; }
+    .tag { font-size: .9375rem; font-weight: 600; color: var(--teto-grama-profundo); }
+    .tag--warn { color: var(--teto-telha); }
+    .item p { margin-top: 14px; max-width: 70ch; color: var(--teto-pedra); }
+
+    /* Comparador: "antes" por cima, recortado pela posição do controle */
+    .cmp { position: relative; overflow: hidden; background: var(--teto-ferro); --pos: 50%; user-select: none; touch-action: pan-y; }
+    .cmp img { display: block; width: 100%; height: auto; }
+    .cmp__antes { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .cmp__antes img { width: 100%; height: 100%; object-fit: cover; }
+    .cmp__linha { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: var(--teto-cal); pointer-events: none; }
+    .cmp__linha::after { content: "‹ ›"; position: absolute; top: 50%; left: 50%; translate: -50% -50%; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--teto-cal); color: var(--teto-ferro); font-weight: 700; letter-spacing: .1em; box-shadow: 0 6px 18px rgb(0 0 0 / .3); }
+    .cmp__rot { position: absolute; top: 14px; padding: 4px 10px; font-size: .875rem; font-weight: 600; background: color-mix(in srgb, var(--teto-ferro) 75%, transparent); color: var(--teto-cal); pointer-events: none; }
+    .cmp__rot--antes { left: 14px; }
+    .cmp__rot--depois { right: 14px; }
+    .cmp input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .cmp:has(input:focus-visible) { outline: 3px solid var(--teto-grama); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main class="in">
+    <a class="back" href="index.html">← Voltar ao site</a>
+    <h1>Renders: antes e depois</h1>
+    <p class="intro">Arraste a linha para comparar o render original com a versão nova (GPT Image 2.5 Flare, 19/11/2026: primeiro o render em alta qualidade, depois a luz de fim de tarde). Também dá para usar as setas do teclado. Três versões novas já estão no site; a vista aérea da Casa A+E não, porque mudou a planta.</p>
+
+    <section class="item">
+      <div class="item__head"><h2>Casa Bela Vista (A+G)</h2><span class="tag">No site: hero e galeria</span></div>
+      <div class="cmp">
+        <img src="assets/img/comparacao/casa-ag-depois.webp" alt="Depois: render novo da Casa Bela Vista" width="1600" height="900" />
+        <div class="cmp__antes"><img src="assets/img/comparacao/casa-ag-antes.webp" alt="Antes: render original da Casa Bela Vista" width="1600" height="900" /></div>
+        <span class="cmp__linha" aria-hidden="true"></span><span class="cmp__rot cmp__rot--antes">Antes</span><span class="cmp__rot cmp__rot--depois">Depois</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da Casa Bela Vista" />
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="item__head"><h2>Casa J.E.</h2><span class="tag">No site: hero e galeria</span></div>
+      <div class="cmp">
+        <img src="assets/img/comparacao/casa-je-depois.webp" alt="Depois: render novo da Casa J.E." width="1600" height="900" />
+        <div class="cmp__antes"><img src="assets/img/comparacao/casa-je-antes.webp" alt="Antes: render original da Casa J.E." width="1600" height="900" /></div>
+        <span class="cmp__linha" aria-hidden="true"></span><span class="cmp__rot cmp__rot--antes">Antes</span><span class="cmp__rot cmp__rot--depois">Depois</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da Casa J.E." />
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="item__head"><h2>Casa Prada</h2><span class="tag">No site: faixa e galeria</span></div>
+      <div class="cmp">
+        <img src="assets/img/comparacao/casa-prada-depois.webp" alt="Depois: render novo da Casa Prada" width="1536" height="1152" />
+        <div class="cmp__antes"><img src="assets/img/comparacao/casa-prada-antes.webp" alt="Antes: render original da Casa Prada" width="1536" height="1152" /></div>
+        <span class="cmp__linha" aria-hidden="true"></span><span class="cmp__rot cmp__rot--antes">Antes</span><span class="cmp__rot cmp__rot--depois">Depois</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da Casa Prada" />
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="item__head"><h2>Casa A+E · vista aérea</h2><span class="tag tag--warn">Não aplicado: mudou a planta</span></div>
+      <div class="cmp" style="max-width: 760px">
+        <img src="assets/img/comparacao/casa-ae-depois.webp" alt="Depois: render novo da Casa A+E" width="1024" height="1024" />
+        <div class="cmp__antes"><img src="assets/img/comparacao/casa-ae-antes.webp" alt="Antes: render original da Casa A+E" width="1024" height="1024" /></div>
+        <span class="cmp__linha" aria-hidden="true"></span><span class="cmp__rot cmp__rot--antes">Antes</span><span class="cmp__rot cmp__rot--depois">Depois</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da Casa A+E" />
+      </div>
+      <p>A casa ficou menor no terreno e as árvores e canteiros foram redistribuídos. O site continua com o render original desta vista.</p>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll('.cmp').forEach((c) => {
+      const r = c.querySelector('input');
+      const set = () => c.style.setProperty('--pos', r.value + '%');
+      r.addEventListener('input', set);
+      set();
+    });
+  </script>
+</body>
+</html>
